@@ -1,0 +1,41 @@
+!DOCTYPE html>
+<html>
+<head>
+  <title>Student Joining Form</title>
+</head>
+<body>
+  <h2>Student Joining Instructions Form</h2>
+  <form action="/submit" method="post">
+    
+    <h3>Student Information</h3>
+    <label for="studentName">Full Name:</label><br>
+    <input type="text" id="studentName" name="studentName" required><br><br>
+    
+    <label for="dob">Date of Birth:</label><br>
+    <input type="date" id="dob" name="dob" required><br><br>
+    
+    <label for="studentEmail">Email:</label><br>
+    <input type="email" id="studentEmail" name="studentEmail" required><br><br>
+    
+    <label for="course">Course Admitted To:</label><br>
+    <input type="text" id="course" name="course" required><br><br>
+    
+    <h3>Parent/Guardian Information</h3>
+    <label for="parentName">Parent/Guardian Name:</label><br>
+    <input type="text" id="parentName" name="parentName" required><br><br>
+    
+    <label for="parentPhone">Phone Number:</label><br>
+    <input type="tel" id="parentPhone" name="parentPhone" required><br><br>
+    
+    <label for="parentEmail">Email:</label><br>
+    <input type="email" id="parentEmail" name="parentEmail"><br><br>
+    
+    <h3>Joining Confirmation</h3>
+    <p>Please confirm that you have read the joining instructions and agree to comply.</p>
+    <input type="checkbox" id="confirm" name="confirm" required>
+    <label for="confirm">I confirm</label><br><br>
+    
+    <input type="submit" value="Submit">
+  </form>
+</body>
+</html>
