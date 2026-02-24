@@ -73,4 +73,189 @@
 </body>
 </html>
 <a href="mim.html">move to Page 2</a>
+    
+
+       
+                 <!DOCTYPE html>
+<html lang="sw">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Registration</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #333;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+
+        .status-select {
+            width: 100%;
+            padding: 5px;
+        }
+
+        .form-container {
+            margin-top: 20px;
+        }
+
+        .result-container {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Attendance Registration</h1>
+
+    <!-- Form for entering new attendance -->
+    <div class="form-container">
+        <h2>Enter Attendance Information</h2>
+        <form id="attendanceForm">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required><br><br>
+
+            <label for="status">Status:</label>
+            <select id="status" name="status" required>
+                <option value="">Select Status</option>
+                <option value="Attendant">Attendant</option>
+                <option value="Absentee">Absentee</option>
+                <option value="Apology">Apology</option>
+            </select><br><br>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- Container to show the results -->
+    <div class="result-container" id="resultContainer">
+        <h2>Attendance Results</h2>
+        
+        <div class="section-title">Attendees</div>
+        <table id="attendeesTable">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Attendees data will be inserted here -->
+            </tbody>
+        </table>
+
+        <div class="section-title">Absentees</div>
+        <table id="absenteesTable">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Absentees data will be inserted here -->
+            </tbody>
+        </table>
+
+        <div class="section-title">Apologies</div>
+        <table id="apologiesTable">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Name</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Apologies data will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Initialize variables for keeping track of table entries
+        let attendeesCounter = 1;
+        let absenteesCounter = 1;
+        let apologiesCounter = 1;
+
+        // Get references to the form and result containers
+        const form = document.getElementById('attendanceForm');
+        const nameInput = document.getElementById('name');
+        const statusSelect = document.getElementById('status');
+        const attendeesTable = document.getElementById('attendeesTable').getElementsByTagName('tbody')[0];
+        const absenteesTable = document.getElementById('absenteesTable').getElementsByTagName('tbody')[0];
+        const apologiesTable = document.getElementById('apologiesTable').getElementsByTagName('tbody')[0];
+
+        // Event listener for form submission
+        form.addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent form from refreshing page
+
+            // Get form values
+            const name = nameInput.value.trim();
+            const status = statusSelect.value;
+
+            // Validate input
+            if (name === '' || status === '') {
+                alert('Please enter both name and status!');
+                return;
+            }
+
+            // Create a new row for each section based on status
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${status === 'Attendant' ? attendeesCounter : status === 'Absentee' ? absenteesCounter : apologiesCounter}</td>
+                <td>${name}</td>
+                <td>${status}</td>
+            `;
+
+            // Append the row to the appropriate table based on status
+            if (status === 'Attendant') {
+                attendeesTable.appendChild(row);
+                attendeesCounter++;
+            } else if (status === 'Absentee') {
+                absenteesTable.appendChild(row);
+                absenteesCounter++;
+            } else if (status === 'Apology') {
+                apologiesTable.appendChild(row);
+                apologiesCounter++;
+            }
+
+            // Clear the form fields for next entry
+            nameInput.value = '';
+            statusSelect.value = '';
+        });
+    </script>
+
+</body>
+</html>
+<a href="agendas.html">move to page 4</a>
+
 
